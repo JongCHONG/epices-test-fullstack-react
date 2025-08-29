@@ -44,7 +44,3 @@ L’application sera accessible à l’adresse [http://localhost:3000](http://lo
 ## Contributions
 
 Les pull requests sont bienvenues. Merci de bien vérifier le fonctionnement avant de proposer des modifications.
-
-## Licence
-
-MIT License
