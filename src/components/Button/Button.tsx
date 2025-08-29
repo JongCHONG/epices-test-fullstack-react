@@ -4,14 +4,14 @@ import ButtonStyles from "./Button.module.scss";
 interface ButtonProps {
   inv: string;
   selectedInverter: string;
-  setSelectedInverter: (inv: string) => void;
+  handleOnClick: (inv: string) => void;
 }
 
-const Button: React.FC<ButtonProps> = ({ inv, selectedInverter, setSelectedInverter }) => {
+const Button: React.FC<ButtonProps> = ({ inv, selectedInverter, handleOnClick }) => {
   return (
     <button
       key={inv}
-      onClick={() => setSelectedInverter(inv)}
+      onClick={() => handleOnClick(inv)}
       className={ButtonStyles.button}
       style={{
         border:
