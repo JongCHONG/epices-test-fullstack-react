@@ -1,0 +1,39 @@
+@import '../../styles/variables';
+
+.production-container {
+  max-width: 600px;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h2 {
+  color: $primary-color;
+}
+
+input[type="date"] {
+  padding: 8px;
+  font-size: 1rem;
+  margin-bottom: 20px;
+  border: 2px solid $primary-color;
+  border-radius: 4px;
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 5px $primary-color;
+  }
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+
+  li {
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
