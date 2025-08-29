@@ -1,46 +1,50 @@
-# Getting Started with Create React App
+# Production App - Frontend React TypeScript
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Cette application React en TypeScript permet d’afficher la production énergétique d’une centrale solaire photovoltaïque. Elle interagit avec un backend (ex: Ruby on Rails) qui fournit les données de production journalière et horaire.
 
-## Available Scripts
+## Fonctionnalités
 
-In the project directory, you can run:
+- Sélection d’une date via un sélecteur de date
+- Affichage de la production totale d’énergie pour la journée sélectionnée
+- Affichage détaillé de la production horaire pour cette journée
+- Interface simple avec styles SCSS pour une meilleure présentation
 
-### `npm start`
+## Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Cloner ce dépôt  
+git clone <url-du-repo-front>
+cd production-app
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+2. Installer les dépendances  
+npm install
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+3. Lancer l’application  
+npm start
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+L’application sera accessible à l’adresse [http://localhost:3000](http://localhost:3000).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Usage
 
-### `npm run eject`
+- Sélectionner une date dans le champ date pour voir la production correspondante  
+- Les données sont récupérées via une API REST exposée par le backend (par défaut `/api/production?date=YYYY-MM-DD`)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Personnalisation
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Les styles sont gérés avec SCSS dans `src/App.scss`  
+- La communication avec le backend se fait avec `fetch` dans le composant `ProductionViewer`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Prérequis
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Node.js v14+  
+- Un backend exposant une API REST compatible
 
-## Learn More
+## Contributions
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Les pull requests sont bienvenues. Merci de bien vérifier le fonctionnement avant de proposer des modifications.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Licence
+
+MIT License
