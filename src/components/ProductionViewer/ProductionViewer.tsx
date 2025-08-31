@@ -2,8 +2,10 @@ import React, { useState, useEffect, useMemo } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import ProductionViewerSyles from "./ProductionViewer.module.scss";
-import Button from "../Button/Button";
-import FormModal from "../FormModal/FormModal";
+import InverterButton from "../InverterButton";
+import FormModal from "../CsvUploadModal";
+
+import { apiUrl } from "../../constants/api";
 
 const ProductionViewer: React.FC = () => {
   const [date, setDate] = useState<string>("2025-07-10");
@@ -15,7 +17,7 @@ const ProductionViewer: React.FC = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
 
   useEffect(() => {
-    fetch(`http://localhost:80/productions/daily/${date}`)
+    fetch(`${apiUrl}/productions/daily/${date}`)
       .then((res) => res.json())
       .then((data) => {
         setTotal(data.total_energy);
@@ -63,7 +65,7 @@ const ProductionViewer: React.FC = () => {
       <h3>Production horaire :</h3>
       <div style={{ display: "flex", gap: 8, marginBottom: 16 }}>
         {inverters.map((inv) => (
-          <Button
+          <InverterButton
             key={uuidv4()}
             inv={inv}
             selectedInverter={selectedInverter || ""}

@@ -1,18 +1,22 @@
 import React from "react";
-import ButtonStyles from "./Button.module.scss";
 
-interface ButtonProps {
+import InverterButtonStyles from "./InverterButton.module.scss";
+
+interface InverterButtonProps {
   inv: string;
   selectedInverter: string;
   handleOnClick: (inv: string) => void;
 }
 
-const Button: React.FC<ButtonProps> = ({ inv, selectedInverter, handleOnClick }) => {
+const InverterButton: React.FC<InverterButtonProps> = ({
+  inv,
+  selectedInverter,
+  handleOnClick,
+}) => {
   return (
     <button
-      key={inv}
       onClick={() => handleOnClick(inv)}
-      className={ButtonStyles.button}
+      className={InverterButtonStyles.button}
       style={{
         border:
           selectedInverter === inv ? "1px solid #007bff" : "1px solid #ccc",
@@ -25,4 +29,4 @@ const Button: React.FC<ButtonProps> = ({ inv, selectedInverter, handleOnClick })
   );
 };
 
-export default Button;
+export default InverterButton;

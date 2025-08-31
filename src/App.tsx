@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ProductionViewer from "./components/ProductionViewer/ProductionViewer";
+import ProductionViewer from "./components/ProductionViewer";
 import './App.scss'
 
 const App: React.FC = () => (

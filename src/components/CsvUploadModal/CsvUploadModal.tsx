@@ -1,13 +1,16 @@
 import React, { useRef, useState } from "react";
-import FormModalStyles from "./FormModal.module.scss";
 
-interface FormModalProps {
+import CsvUploadModalStyles from "./CsvUploadModal.module.scss";
+
+import { apiUrl } from "../../constants/api";
+
+interface CsvUploadModalProps {
   isOpen: boolean;
   onClose: () => void;
   onUploadSuccess?: () => void;
 }
 
-const FormModal: React.FC<FormModalProps> = ({
+const CsvUploadModal: React.FC<CsvUploadModalProps> = ({
   isOpen,
   onClose,
   onUploadSuccess,
@@ -31,11 +34,17 @@ const FormModal: React.FC<FormModalProps> = ({
 
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:80/productions/import", {
+      const res = await fetch(`${apiUrl}/productions/import`, {
         method: "POST",
         body: formData,
       });
-      if (!res.ok) throw new Error("Erreur lors de l'envoi du fichier.");
+      if (!res.ok) {
+        setError(
+          "L'envoi a échoué. Veuillez réessayer avec un fichier CSV valide."
+        );
+        setLoading(false);
+        return;
+      }
       setLoading(false);
       onUploadSuccess && onUploadSuccess();
       onClose();
@@ -48,9 +57,9 @@ const FormModal: React.FC<FormModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className={FormModalStyles.overlay}>
-      <div className={FormModalStyles.modal}>
-        <button className={FormModalStyles.close} onClick={onClose}>
+    <div className={CsvUploadModalStyles.overlay}>
+      <div className={CsvUploadModalStyles.modal}>
+        <button className={CsvUploadModalStyles.close} onClick={onClose}>
           ×
         </button>
         <h2>Importer un fichier CSV</h2>
@@ -61,7 +70,7 @@ const FormModal: React.FC<FormModalProps> = ({
             ref={fileInputRef}
             disabled={loading}
           />
-          {error && <div className={FormModalStyles.error}>{error}</div>}
+          {error && <div className={CsvUploadModalStyles.error}>{error}</div>}
           <button type="submit" disabled={loading}>
             {loading ? "Envoi..." : "Envoyer"}
           </button>
@@ -71,4 +80,4 @@ const FormModal: React.FC<FormModalProps> = ({
   );
 };
 
-export default FormModal;
+export default CsvUploadModal;
